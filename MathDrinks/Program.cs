@@ -1,7 +1,11 @@
+using MathDrinks.Data;
+using MathDrinks.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IApplicationMySqlDbContext, ApplicationMySqlDbContext>();
 
 var app = builder.Build();
 
