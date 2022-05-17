@@ -1,0 +1,67 @@
+﻿@model Contact
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Contato</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Nome de contato</label>
+            <input asp-for="Name" placeholder="Escreva seu nome" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">E-mail de contato</label>
+            <input asp-for="Email" placeholder="Escreva seu e-mail de contato" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Phone"> Telefone de contato</label>
+            <input asp-for="Phone" placeholder="(xx)xxxx-xxxx" class="form-control" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Mensage">Mensagem de contato</label>
+            <input asp-for="Mensage" placeholder="Mensagem para o contato" class="form-control" />
+            <span asp-validation-for="Mensage" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Line_Of_Contact">Forma de contato</label>
+            <input asp-for="Line_Of_Contact" placeholder="Forma de contato" class="form-control" />
+            <span asp-validation-for="Line_Of_Contact" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Hour_Contact">Melhor horario para contato</label>
+            <select class="form-select" aria-label="Default select example" asp-for="Hour_Contact" class="form-control">
+                <option>Manhã</option>
+                <option>Tarde</option>
+                <option>Noite</option>
+            </select>
+            <span asp-validation-for="Hour_Contact" class="text-danger"></span>
+        </div>
+        <label asp-for="Need_Descount">Quer receber cupom de desconto?</label>
+        <div class="form-check">
+            <input  class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label  class="form-check-label" for="flexRadioDefault1">
+                Sim
+            </label>
+        </div>
+        <div class="form-check">
+            <input   class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label   class="form-check-label" for="flexRadioDefault2">
+                Nao
+            </label>
+        </div>
+
+       
+        <button type="submit" class="btn btn-primary" style="width:150px">Enviar</button>
+        <a asp-controller="Material" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}
