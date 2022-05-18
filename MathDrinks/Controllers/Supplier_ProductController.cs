@@ -1,26 +1,25 @@
 ﻿using MathDrinks.Interfaces;
 using MathDrinks.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace MathDrinks.Controllers
 {
-    public class SupplierController : Controller
+    public class Supplier_ProductController : Controller
     {
+
         public readonly IApplicationMySqlDbContext _db;
 
-        public SupplierController(IApplicationMySqlDbContext db)
+        public Supplier_ProductController(IApplicationMySqlDbContext db)
         {
             _db = db;
         }
         public IActionResult Index()
         {
-            IEnumerable<Supplier> objCategories = _db.Supplier.ToList();
+            IEnumerable<Supplier_Product> objCategories = _db.Supplier_Product.ToList();
             return View(objCategories);
         }
 
-        public IActionResult Create() 
+        public IActionResult Create()
         {
             Fill();
             return View();
@@ -37,7 +36,7 @@ namespace MathDrinks.Controllers
 
         public IActionResult Edit(int id)
         {
-            
+
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -57,7 +56,7 @@ namespace MathDrinks.Controllers
         public IActionResult Edit(Supplier obj)
         {
             if (ModelState.IsValid)
-            _db.Supplier.Update(obj);
+                _db.Supplier.Update(obj);
             _db.Save();
             TempData["success"] = "Fornecedor editado com sucesso.";
             return RedirectToAction("Index");
@@ -90,10 +89,15 @@ namespace MathDrinks.Controllers
             TempData["success"] = "Fornecedor deletado com sucesso.";
             return RedirectToAction("Index");
         }
-        private void Fill() 
+        private void Fill()
         {
-        var products = _db.Product.AsNoTracking().ToList();
+            var products = _db.Product.AsNoTracking().ToList();
             ViewBag.Product = products.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
         }
+
+
+
+
+
     }
 }

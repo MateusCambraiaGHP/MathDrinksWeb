@@ -9,29 +9,26 @@
             <h2 class="text-primary text-danger">Lista de Produtos</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Supplier" asp-action="Create" class="btn btn-primary bg-danger">
-                <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Fornecedor
+            <a asp-controller="Product" asp-action="Create" class="btn btn-primary bg-danger">
+                <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Produto
             </a>
         </div>
     </div>
     <br /><br />
- @*   <table class="table table-bordered table-striped" style="width:100%">
+    <table class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>
                     Nome
                 </th>
                 <th>
-                    CNPJ
+                    Quantidade
                 </th>
                 <th>
-                    Cep
+                    Preço
                 </th>
                 <th>
-                    Data Cadastro
-                </th>
-                <th>
-                    Parâmetros QRCODE
+                    Descrição
                 </th>
             </tr>
 
@@ -40,32 +37,29 @@
             @foreach (var obj in Model)
             {
                 <tr>
-                    <td width="10%">
-                        @obj.NameSupplier
+                    <td width="20%">
+                        @obj.Name
                     </td>
                     <td width="13%">
-                        @obj.CNPJ
+                        @obj.Quantity
                     </td>
                     <td width="20%">
-                        @obj.Cep
+                        @obj.Price
                     </td>
-                    <td width="15%">
-                        @obj.DataCadastro
-                    </td>
-                    <td width="30%">
-                        @obj.QrCode
+                    <td width="40%">
+                        @obj.Description
                     </td>
                      <td>
                         <div class="w-76 btn-group" role="group">
-                        <a asp-controller="Supplier" asp-action="Edit" asp-route-id="@obj.Id"
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id"
                         class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
-                        <a asp-controller="Supplier" asp-action="Delete" asp-route-id="@obj.Id"
+                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"
                         class="btn btn-danger mx-2" ><i class="bi bi-trash3"></i> Remove</a>
                         </div>
                      </td>
                 </tr>
             }
         </tbody>
-    </table>*@
+    </table>
 </div>
 

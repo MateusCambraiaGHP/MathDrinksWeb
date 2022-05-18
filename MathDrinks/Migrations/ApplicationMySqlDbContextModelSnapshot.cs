@@ -91,9 +91,6 @@ namespace MathDrinks.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("SupplierID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Updated_at")
                         .HasColumnType("datetime");
 
@@ -135,7 +132,42 @@ namespace MathDrinks.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(35)");
 
-                    b.Property<int>("ProductID")
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Updated_by")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Supplier");
+                });
+
+            modelBuilder.Entity("MathDrinks.Models.SupplierProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Created_by")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Drescription")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(20,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Updated_at")
@@ -147,7 +179,7 @@ namespace MathDrinks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Supplier");
+                    b.ToTable("Supplier_Product");
                 });
 #pragma warning restore 612, 618
         }

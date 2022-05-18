@@ -5,7 +5,6 @@ namespace MathDrinks.Models
     public class Product
     {
         public int Id { get; set; }
-        public int SupplierID { get; set; } 
 
         [Column(TypeName = "varchar(45)")]
         public string Name { get; set; }

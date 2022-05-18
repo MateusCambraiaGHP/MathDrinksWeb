@@ -8,28 +8,32 @@
         </div>
         <div class="mb-3">
             <label asp-for="Name">Nome de contato</label>
-            <input asp-for="Name" placeholder="Escreva seu nome" class="form-control" />
+            <input asp-for="Name" placeholder="Escreva seu nome." class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Email">E-mail de contato</label>
-            <input asp-for="Email" placeholder="Escreva seu e-mail de contato" class="form-control" />
+            <input asp-for="Email" placeholder="Escreva seu e-mail de contato." class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Phone"> Telefone de contato</label>
-            <input asp-for="Phone" placeholder="(xx)xxxx-xxxx" class="form-control" />
+            <input asp-for="Phone" placeholder="(XX)XXXX-XXXX" class="form-control" />
             <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Mensage">Mensagem de contato</label>
-            <input asp-for="Mensage" placeholder="Mensagem para o contato" class="form-control" />
+            <textarea asp-for="Mensage" placeholder="Mensagem para o contato." class="form-control"></textarea>
             <span asp-validation-for="Mensage" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Line_Of_Contact">Forma de contato</label>
-            <input asp-for="Line_Of_Contact" placeholder="Forma de contato" class="form-control" />
-            <span asp-validation-for="Line_Of_Contact" class="text-danger"></span>
+            <label asp-for="Line_Of_Contact">Meio de contato</label>
+            <select class="form-select" aria-label="Default select example" asp-for="Line_Of_Contact" class="form-control">
+                <option>Whatsapp</option>
+                <option>Email</option>
+                <option>Telefone</option>
+            </select>
+            <span asp-validation-for="Hour_Contact" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Hour_Contact">Melhor horario para contato</label>
@@ -40,21 +44,17 @@
             </select>
             <span asp-validation-for="Hour_Contact" class="text-danger"></span>
         </div>
-        <label asp-for="Need_Descount">Quer receber cupom de desconto?</label>
-        <div class="form-check">
-            <input  class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label  class="form-check-label" for="flexRadioDefault1">
-                Sim
-            </label>
+         <div class="mb-3">
+            <label asp-for="Need_Descount">Quer receber cupom de desconto?</label>
+            <select class="form-select" aria-label="Default select example" asp-for="Need_Descount" class="form-control">
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
+            </select>
+            <span asp-validation-for="Need_Descount" class="text-danger"></span>
         </div>
-        <div class="form-check">
-            <input   class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label   class="form-check-label" for="flexRadioDefault2">
-                Nao
-            </label>
-        </div>
-
        
+
+
         <button type="submit" class="btn btn-primary" style="width:150px">Enviar</button>
         <a asp-controller="Material" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
     </div>

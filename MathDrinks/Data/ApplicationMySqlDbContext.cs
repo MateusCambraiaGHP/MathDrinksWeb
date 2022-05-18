@@ -22,6 +22,7 @@ namespace MathDrinks.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
+        public DbSet<SupplierProduct> Supplier_Product { get; set; } 
 
         public int Save() 
         {

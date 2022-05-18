@@ -2,21 +2,17 @@
 
 namespace MathDrinks.Models
 {
-    public class Supplier
+    public class Supplier_Product
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
+        public int SupplierId { get; set; }
+        public int ProductId { get; set; }
+        
+        [Column(TypeName = "decimal(20,2)")]
+        public int Price { get; set; }
 
-        [Column(TypeName = "varchar(35)")]
-        public string Name { get; set; }
-        
-        [Column(TypeName = "varchar(35)")]
-        public string FantasyName { get; set; }
-       
-        [Column(TypeName = "varchar(45)")]
-        public string CNPJ { get; set; }
-        
-        [Column(TypeName = "varchar(35)")]
-        public string Cep { get; set; }
+        [Column(TypeName = "varchar(150)")]
+        public string Drescription { get; set;  }
         public string Created_by { get; set; } = "Administrador";
 
         [Column(TypeName = "datetime")]
