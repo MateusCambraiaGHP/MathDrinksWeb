@@ -1,0 +1,37 @@
+﻿@model Supplier_Product
+
+
+<form method="post">
+    <input type="hidden" asp-for="SupplierId"  value="@Model.SupplierId" />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Adicionar Produto</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductId">Nome do produto</label>
+            <select class="form-select" aria-label="Default select example" asp-for="ProductId" asp-items="ViewBag.Product" class="form-control">
+                <option>Nenhum</option>
+            </select>
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price">Preço do produto</label>
+            <input asp-for="Price" placeholder="Informe o preço do produto." class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Drescription">Descrição do produto</label>
+            <textarea asp-for="Drescription" placeholder="Informe a descrição do produto." class="form-control"></textarea>
+            <span asp-validation-for="Drescription" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" style="width:150px">Criar</button>
+            <a asp-controller="Supplier" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar</a>
+        </div>
+       @*  <div class="w-76 btn-group" role="group">
+                        <a asp-controller="Supplier" asp-action="Edit" asp-route-id=""
+                        class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
+        </div>*@
+    </div>
+</form>

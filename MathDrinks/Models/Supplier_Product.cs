@@ -21,5 +21,8 @@ namespace MathDrinks.Models
 
         [Column(TypeName = "datetime")]
         public DateTime Updated_at { get; set; } = DateTime.Now;
+        public Supplier supplier { get; set; }
+        public Product product { get; set; }
+        
     }
 }

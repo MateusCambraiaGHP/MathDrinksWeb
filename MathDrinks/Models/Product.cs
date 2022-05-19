@@ -7,7 +7,7 @@ namespace MathDrinks.Models
         public int Id { get; set; }
 
         [Column(TypeName = "varchar(45)")]
-        public string Name { get; set; }
+        public string Name { get; set; } 
 
         [Column(TypeName = "varchar(130)")]
         public string Description { get; set; }

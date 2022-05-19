@@ -9,11 +9,13 @@ namespace MathDrinks.Controllers
     public class SupplierController : Controller
     {
         public readonly IApplicationMySqlDbContext _db;
-
+        
+        
         public SupplierController(IApplicationMySqlDbContext db)
         {
             _db = db;
         }
+        
         public IActionResult Index()
         {
             IEnumerable<Supplier> objCategories = _db.Supplier.ToList();
@@ -42,14 +44,16 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-            var supplierFromDb = _db.Supplier.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-
+            var supplierFromDb = _db.Supplier.AsNoTracking().Include(m => m.Supplier_Product).Where(c => c.Id == id).FirstOrDefault();
+            
+            
             if (supplierFromDb == null)
             {
                 return NotFound();
             }
-
+            
             return View(supplierFromDb);
+            
         }
 
         [HttpPost]
@@ -95,5 +99,12 @@ namespace MathDrinks.Controllers
         var products = _db.Product.AsNoTracking().ToList();
             ViewBag.Product = products.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
         }
+
+        
+
+
+
+
+
     }
 }

@@ -1,0 +1,47 @@
+﻿@model Supplier_Product
+@*<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Excluir Fornecedor</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Nome</label>
+            <input asp-for="Name" disabled placeholder="Digite o nome do fornecedor" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FantasyName">Nome Fantasia</label>
+            <input asp-for="FantasyName" disabled placeholder="Digite seu nome fantasia do fornecedor" class="form-control" />
+            <span asp-validation-for="FantasyName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CNPJ" >CNPJ</label>
+            <input asp-for="CNPJ" disabled placeholder="Digite o CNPJ do fornecedor" class="form-control" />
+            <span asp-validation-for="CNPJ" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cep" id="cep">Cep Do Fornecedor</label>
+            <input asp-for="Cep" disabled placeholder="Cep do fornecedor" class="form-control" />
+            <span asp-validation-for="Cep" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductID">Nome do produto</label>    
+            <select class="form-select" disabled aria-label="Default select example" asp-for="ProductID"  class="form-control">
+            <option>Nenhum</option>
+            </select>
+            <span asp-validation-for="ProductID" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Excluir</button>
+        <a asp-controller="Supplier" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}
+*@
