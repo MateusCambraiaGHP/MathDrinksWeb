@@ -39,28 +39,34 @@ namespace MathDrinks.Controllers
 
         public IActionResult Edit(int id)
         {
-            
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var supplierFromDb = _db.Supplier.AsNoTracking().Include(m => m.Supplier_Product).Where(c => c.Id == id).FirstOrDefault();
-            
-            
+            ///Está variavel auxiliar é pra instanciar o produto e o supplier no supplier_product porque o include não estava instanciando
+            ///produto
+            var supplier_product = _db.Supplier_Product.AsNoTracking()
+                .Where(c => c.SupplierId == id)
+                .Include(sp => sp.supplier)
+                .Include(sp => sp.product);
+
+            ///pegando o fornecedor do banco de dados onde o id passado no construtor é igual ao id do fornecedor da tabela 
+            var supplierFromDb = _db.Supplier.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
+
+            ///supplierProduct instanciado e pronto para ser utilizado na tabela para mostrar no front end
+            supplierFromDb.supplierProduct = supplier_product.ToList();
+
             if (supplierFromDb == null)
             {
                 return NotFound();
             }
-            
             return View(supplierFromDb);
-            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Supplier obj)
         {
-            if (ModelState.IsValid)
             _db.Supplier.Update(obj);
             _db.Save();
             TempData["success"] = "Fornecedor editado com sucesso.";

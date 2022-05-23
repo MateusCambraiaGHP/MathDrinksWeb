@@ -17,12 +17,6 @@ namespace MathDrinks.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
        
     }
 }

@@ -71,14 +71,11 @@
 
         </thead>
         <tbody>
-             @foreach (var obj in @Model.Supplier_Product){
+             @foreach (var obj in @Model.supplierProduct){
                 <tr>
                     <td width="25%">
                       @obj.supplier.Name
                     </td>
-             @*       <td width="13%">
-                        @obj.ProductID
-                    </td>*@
                     <td width="25%">
                       @obj.product.Name
                     </td>
@@ -88,14 +85,14 @@
                     <td width="25%">
                         @obj.Price
                     </td>
-                     @*<td>
+                     <td>
                         <div class="w-76 btn-group" role="group">
-                        <a asp-controller="Supplier_Product" asp-action="Edit" asp-route-id="@ViewBag.Id"
+                        <a asp-controller="SupplierProducts" asp-action="Edit" asp-route-id="@obj.Id"
                         class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
-                        <a asp-controller="Supplier_Product" asp-action="Delete" asp-route-id="@ViewBag.Id"
+                        <a asp-controller="SupplierProducts" asp-action="Delete" asp-route-id="@obj.Id"
                         class="btn btn-danger mx-2" ><i class="bi bi-trash3"></i> Remove</a>
                         </div>
-                     </td>*@
+                     </td>
                 </tr>
             }
         </tbody>

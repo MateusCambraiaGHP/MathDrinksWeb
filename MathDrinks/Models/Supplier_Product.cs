@@ -5,8 +5,8 @@ namespace MathDrinks.Models
     public class Supplier_Product
     {
         public int Id { get; set; }
-        public int SupplierId { get; set; }
         public int ProductId { get; set; }
+        public int SupplierId { get; set; }
         
         [Column(TypeName = "decimal(20,2)")]
         public int Price { get; set; }
@@ -23,6 +23,6 @@ namespace MathDrinks.Models
         public DateTime Updated_at { get; set; } = DateTime.Now;
         public Supplier supplier { get; set; }
         public Product product { get; set; }
-        
+
     }
 }

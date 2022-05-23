@@ -7,23 +7,23 @@
         </div>
           <div class="mb-3">
             <label asp-for="Name">Nome</label>
-            <input asp-for="Name" placeholder="Digite o nome do fornecedor" class="form-control" />
+            <input disabled asp-for="Name" placeholder="Digite o nome do fornecedor" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Description">Descrição do Produto</label>
-            <textarea asp-for="Description" placeholder="Informe a descrição do produto." class="form-control"></textarea>
+            <textarea disabled asp-for="Description" placeholder="Informe a descrição do produto." class="form-control"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         
         <div class="mb-3">
             <label asp-for="Quantity" >Quantidade</label>
-            <input asp-for="Quantity"  placeholder="informe a quantidade do produto" class="form-control" />
+            <input disabled asp-for="Quantity"  placeholder="informe a quantidade do produto" class="form-control" />
             <span asp-validation-for="Quantity" class="text-danger"></span>
         </div>
           <div class="mb-3">
             <label asp-for="Price" >Preço</label>
-            <input asp-for="Price"  placeholder="informe o preço do produto" class="form-control" />
+            <input disabled asp-for="Price"  placeholder="informe o preço do produto" class="form-control" />
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Criar</button>

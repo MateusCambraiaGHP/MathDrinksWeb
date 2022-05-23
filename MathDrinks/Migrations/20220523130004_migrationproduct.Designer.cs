@@ -3,6 +3,7 @@ using System;
 using MathDrinks.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MathDrinks.Migrations
 {
     [DbContext(typeof(ApplicationMySqlDbContext))]
-    partial class ApplicationMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220523130004_migrationproduct")]
+    partial class migrationproduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,9 +93,6 @@ namespace MathDrinks.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplierId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Updated_at")
                         .HasColumnType("datetime");
 
@@ -102,8 +101,6 @@ namespace MathDrinks.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SupplierId");
 
                     b.ToTable("Product");
                 });
@@ -191,13 +188,6 @@ namespace MathDrinks.Migrations
                     b.ToTable("Supplier_Product");
                 });
 
-            modelBuilder.Entity("MathDrinks.Models.Product", b =>
-                {
-                    b.HasOne("MathDrinks.Models.Supplier", null)
-                        .WithMany("product")
-                        .HasForeignKey("SupplierId");
-                });
-
             modelBuilder.Entity("MathDrinks.Models.Supplier_Product", b =>
                 {
                     b.HasOne("MathDrinks.Models.Product", "product")
@@ -224,8 +214,6 @@ namespace MathDrinks.Migrations
 
             modelBuilder.Entity("MathDrinks.Models.Supplier", b =>
                 {
-                    b.Navigation("product");
-
                     b.Navigation("supplierProduct");
                 });
 #pragma warning restore 612, 618

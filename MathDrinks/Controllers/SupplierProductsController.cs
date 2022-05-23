@@ -41,34 +41,34 @@ namespace MathDrinks.Controllers
 
         public IActionResult Edit(int id)
         {
-
+            Fill();
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var supplierProduct = _db.Supplier_Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
+            var supplierProducts = _db.Supplier_Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
 
-            if (supplierProduct == null)
+            if (supplierProducts == null)
             {
                 return NotFound();
             }
 
-            return View(supplierProduct);
+            return View(supplierProducts);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Supplier_Product obj)
         {
-            if (ModelState.IsValid)
             _db.Supplier_Product.Update(obj);
             _db.Save();
             TempData["success"] = "Edição feita com sucesso.";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Supplier");
         }
 
         public IActionResult Delete(int id)
         {
+            Fill();
             if (id == null || id == 0)
             {
                 return NotFound();
