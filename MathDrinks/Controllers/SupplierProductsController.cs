@@ -21,7 +21,6 @@ namespace MathDrinks.Controllers
             return View(objSupplierProduct);
         }
 
-        //[HttpGet("{SupplierId}")]
         public IActionResult Create(int SupplierId)
         {
             Fill();
@@ -52,7 +51,6 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-
             return View(supplierProducts);
         }
 
@@ -73,13 +71,12 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-            var supplierProductFromDb = _db.Supplier_Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
 
+            var supplierProductFromDb = _db.Supplier_Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
             if (supplierProductFromDb == null)
             {
                 return NotFound();
             }
-
             return View(supplierProductFromDb);
         }
 
@@ -94,8 +91,7 @@ namespace MathDrinks.Controllers
             TempData["success"] = "Produto deletado do fornecedor.";
             return RedirectToAction("Index");
         }
-        
-        
+ 
         private void Fill()
         {
             var products = _db.Product.AsNoTracking().ToList();

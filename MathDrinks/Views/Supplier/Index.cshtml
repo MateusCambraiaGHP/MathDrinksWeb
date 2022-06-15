@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Supplier>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Supplier Page";
 }
 
 <div class="container p-3">
@@ -9,7 +9,7 @@
             <h2 class="text-primary text-danger">Lista de Fornecedores</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Supplier" asp-action="Create"  class="btn btn-primary bg-danger">
+            <a asp-controller="Supplier" asp-action="Create" class="btn btn-primary bg-danger">
                 <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Fornecedor
             </a>
         </div>
@@ -37,29 +37,22 @@
                     <td width="25%">
                         @obj.FantasyName
                     </td>
-             @*       <td width="13%">
-                        @obj.ProductID
-                    </td>*@
                     <td width="25%">
                         @obj.CNPJ
                     </td>
                     <td width="25%">
                         @obj.Cep
                     </td>
-                     <td>
+                    <td>
                         <div class="w-76 btn-group" role="group">
-                        <a asp-controller="Supplier" asp-action="Edit" asp-route-id="@obj.Id"
-                        class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
-                        <a asp-controller="Supplier" asp-action="Delete" asp-route-id="@obj.Id"
-                        class="btn btn-danger mx-2" ><i class="bi bi-trash3"></i> Remove</a>
+                            <a asp-controller="Supplier" asp-action="Edit" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-controller="Supplier" asp-action="Delete" asp-route-id="@obj.Id"
+                           class="btn btn-danger mx-2"><i class="bi bi-trash3"></i> Remove</a>
                         </div>
-                     </td>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-
-
-

@@ -1,7 +1,7 @@
 ﻿@model Supplier_Product
 
 <form method="post">
-    <input type="hidden" asp-for="SupplierId"  value="@Model.SupplierId" />
+    <input type="hidden" asp-for="SupplierId" value="@Model.SupplierId" />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Remover Produto</h2>
@@ -9,7 +9,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="ProductId">Nome do produto</label>
-            <select disabled class="form-select"  aria-label="Default select example" asp-for="ProductId" asp-items="ViewBag.Product" class="form-control">
+            <select disabled class="form-select" aria-label="Default select example" asp-for="ProductId" asp-items="ViewBag.Product" class="form-control">
                 <option>Nenhum</option>
             </select>
             <span asp-validation-for="ProductId" class="text-danger"></span>
@@ -28,10 +28,6 @@
             <button type="submit" class="btn btn-primary" style="width:150px">Criar</button>
             <a asp-controller="Supplier" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar</a>
         </div>
-       @*  <div class="w-76 btn-group" role="group">
-                        <a asp-controller="Supplier" asp-action="Edit" asp-route-id=""
-                        class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
-        </div>*@
     </div>
 </form>
 

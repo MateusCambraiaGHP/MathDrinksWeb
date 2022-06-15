@@ -1,4 +1,7 @@
 ﻿@model Contact
+@{
+    ViewData["Title"] = "Contact Page";
+}
 
 <form method="post">
     <div class="border p-3 mt-4">
@@ -13,7 +16,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Email">E-mail de contato</label>
-            <input asp-for="Email" placeholder="Escreva seu e-mail de contato." class="form-control" />
+            <input asp-for="Email" data-inputmask="'alias': 'email'" inputmode="numeric" id="email" placeholder="Escreva seu e-mail de contato." class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -44,7 +47,7 @@
             </select>
             <span asp-validation-for="Hour_Contact" class="text-danger"></span>
         </div>
-         <div class="mb-3">
+        <div class="mb-3">
             <label asp-for="Need_Descount">Quer receber cupom de desconto?</label>
             <select class="form-select" aria-label="Default select example" asp-for="Need_Descount" class="form-control">
                 <option value="1">Sim</option>
@@ -52,9 +55,6 @@
             </select>
             <span asp-validation-for="Need_Descount" class="text-danger"></span>
         </div>
-       
-
-
         <button type="submit" class="btn btn-primary" style="width:150px">Enviar</button>
         <a asp-controller="Material" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
     </div>

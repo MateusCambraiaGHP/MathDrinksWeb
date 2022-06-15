@@ -9,8 +9,7 @@ namespace MathDrinks.Controllers
     public class SupplierController : Controller
     {
         public readonly IApplicationMySqlDbContext _db;
-        
-        
+                
         public SupplierController(IApplicationMySqlDbContext db)
         {
             _db = db;
@@ -27,10 +26,16 @@ namespace MathDrinks.Controllers
             Fill();
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Supplier obj)
         {
+            Validate(obj);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             _db.Supplier.Add(obj);
             _db.Save();
             TempData["success"] = "Fornecedor criado com sucesso.";
@@ -49,10 +54,8 @@ namespace MathDrinks.Controllers
                 .Where(c => c.SupplierId == id)
                 .Include(sp => sp.supplier)
                 .Include(sp => sp.product);
-
             ///pegando o fornecedor do banco de dados onde o id passado no construtor é igual ao id do fornecedor da tabela 
             var supplierFromDb = _db.Supplier.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-
             ///supplierProduct instanciado e pronto para ser utilizado na tabela para mostrar no front end
             supplierFromDb.supplierProduct = supplier_product.ToList();
 
@@ -85,7 +88,6 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-
             return View(supplierFromDb);
         }
 
@@ -100,17 +102,19 @@ namespace MathDrinks.Controllers
             TempData["success"] = "Fornecedor deletado com sucesso.";
             return RedirectToAction("Index");
         }
+
         private void Fill() 
         {
         var products = _db.Product.AsNoTracking().ToList();
             ViewBag.Product = products.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
         }
 
-        
-
-
-
-
-
+        private void Validate(Supplier supplier)
+        {
+            if (String.IsNullOrEmpty(supplier.CNPJ) || supplier.CNPJ.Length != 18)
+            {
+                ModelState.AddModelError("CNPJ", "Insira um CNPJ válido.");
+            }
+        }
     }
 }

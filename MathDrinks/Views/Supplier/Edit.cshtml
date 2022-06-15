@@ -6,7 +6,7 @@
             <h2 class="text-primary">Editar Fornecedor</h2>
             <hr />
         </div>
-      <div class="mb-3">
+        <div class="mb-3">
             <label asp-for="Name">Nome</label>
             <input asp-for="Name" placeholder="Digite o nome do fornecedor" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
@@ -17,29 +17,19 @@
             <span asp-validation-for="FantasyName" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="CNPJ" >CNPJ</label>
+            <label asp-for="CNPJ">CNPJ</label>
             <input asp-for="CNPJ" placeholder="Digite o CNPJ do fornecedor" class="form-control" />
             <span asp-validation-for="CNPJ" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Cep" id="cep">Cep Do Fornecedor</label>
-            <input asp-for="Cep"  placeholder="Cep do fornecedor" class="form-control" />
+            <input asp-for="Cep" placeholder="Cep do fornecedor" class="form-control" />
             <span asp-validation-for="Cep" class="text-danger"></span>
         </div>
-@*        <div class="mb-3">
-            <label asp-for="ProductID">Nome do produto</label>    
-            <select class="form-select"  aria-label="Default select example" asp-for="ProductID"  class="form-control">
-            <option>Nenhum</option>
-            </select>
-            <span asp-validation-for="ProductID" class="text-danger"></span>
-        </div>*@
         <button type="submit" class="btn btn-primary" style="width:150px">Editar</button>
         <a asp-controller="Supplier" asp-action="Index" class="btn btn-secondary" style="width:150px">Voltar a Lista</a>
     </div>
 </form>
-
-
-
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -68,16 +58,16 @@
                     Preço
                 </th>
             </tr>
-
         </thead>
         <tbody>
-             @foreach (var obj in @Model.supplierProduct){
+            @foreach (var obj in @Model.supplierProduct)
+            {
                 <tr>
                     <td width="25%">
-                      @obj.supplier.Name
+                        @obj.supplier.Name
                     </td>
                     <td width="25%">
-                      @obj.product.Name
+                        @obj.product.Name
                     </td>
                     <td width="25%">
                         @obj.Drescription
@@ -85,21 +75,19 @@
                     <td width="25%">
                         @obj.Price
                     </td>
-                     <td>
+                    <td>
                         <div class="w-76 btn-group" role="group">
-                        <a asp-controller="SupplierProducts" asp-action="Edit" asp-route-id="@obj.Id"
-                        class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
-                        <a asp-controller="SupplierProducts" asp-action="Delete" asp-route-id="@obj.Id"
-                        class="btn btn-danger mx-2" ><i class="bi bi-trash3"></i> Remove</a>
+                            <a asp-controller="SupplierProducts" asp-action="Edit" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-controller="SupplierProducts" asp-action="Delete" asp-route-id="@obj.Id"
+                           class="btn btn-danger mx-2"><i class="bi bi-trash3"></i> Remove</a>
                         </div>
-                     </td>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-
 
 @section Scripts{
     @{

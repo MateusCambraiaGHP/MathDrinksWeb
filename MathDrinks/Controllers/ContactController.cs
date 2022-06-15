@@ -17,6 +17,7 @@ namespace MathDrinks.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Contact obj)
