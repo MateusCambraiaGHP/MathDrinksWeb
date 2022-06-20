@@ -12,8 +12,19 @@
             <a asp-controller="Product" asp-action="Create" class="btn btn-primary bg-danger">
                 <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Produto
             </a>
+            <a id="botao-trazer-produtos" class="btn btn-primary btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Atualizar Produtos
+            </a>
         </div>
     </div>
+    <div>
+        <img src="~/lib/img/spinner.gif" alt="Spinner" id="spinner" class="align-content-center">
+        <p id="erro">Ocorreu um erro, por favor tente novamente</p>
+    </div>
+    <form class="d-flex">
+        <input id="input-filtro-produto"  class="form-control me-sm-2" type="text" placeholder="Filtrar">
+        <button id="botao-filtrar-produto" class="btn btn-secondary my-2 my-sm-0" type="submit">Filtrar</button>
+    </form>
     <br /><br />
     <table class="table table-bordered table-striped" style="width:100%">
         <thead>
@@ -33,7 +44,7 @@
             </tr>
 
         </thead>
-        <tbody>
+        <tbody id="tabela-produtos">
             @foreach (var obj in Model)
             {
                 <tr>
@@ -49,17 +60,20 @@
                     <td width="40%">
                         @obj.Description
                     </td>
-                     <td>
+                    <td>
                         <div class="w-76 btn-group" role="group">
-                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id"
-                        class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
-                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"
-                        class="btn btn-danger mx-2" ><i class="bi bi-trash3"></i> Remove</a>
+                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"
+                           class="btn btn-danger mx-2"><i class="bi bi-trash3"></i> Remove</a>
                         </div>
-                     </td>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/main.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

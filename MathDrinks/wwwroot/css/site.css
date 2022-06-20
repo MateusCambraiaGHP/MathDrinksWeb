@@ -16,3 +16,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#spinner {
+    display: none;
+}
+
+#erro {
+    color: rgb(251, 78, 78);
+    font-size: large;
+    display: none;
+}
+
+.invisible {
+    display: none;
+}

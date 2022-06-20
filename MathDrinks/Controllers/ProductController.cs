@@ -14,6 +14,21 @@ namespace MathDrinks.Controllers
             _db = db;
         }
 
+        // [HttpGet("syncprodutos")]
+        public IActionResult GetProduct()
+        {
+            IEnumerable<Product> producsObj = _db.Product.ToList();
+            return Ok(producsObj);
+        }
+
+        public IActionResult PostProduct(Product obj)
+        {
+            if (ModelState.IsValid)
+            _db.Product.Add(obj);
+            _db.Save();
+            return Ok();
+        }
+
         public IActionResult Index() 
         {
             IEnumerable<Product> producsObj = _db.Product.ToList();
@@ -23,6 +38,7 @@ namespace MathDrinks.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Product obj) 
