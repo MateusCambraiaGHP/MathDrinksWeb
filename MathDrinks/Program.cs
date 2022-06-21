@@ -1,11 +1,13 @@
 using MathDrinks.Data;
 using MathDrinks.Interfaces;
+using MathDrinks.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IApplicationMySqlDbContext, ApplicationMySqlDbContext>();
+builder.Services.AddScoped<IProducExcelService, ProductExcelService>();
 
 var app = builder.Build();
 

@@ -22,9 +22,17 @@
         <p id="erro">Ocorreu um erro, por favor tente novamente</p>
     </div>
     <form class="d-flex">
-        <input id="input-filtro-produto"  class="form-control me-sm-2" type="text" placeholder="Filtrar">
+        <input id="input-filtro-produto" class="form-control me-sm-2" type="text" placeholder="Filtrar">
         <button id="botao-filtrar-produto" class="btn btn-secondary my-2 my-sm-0" type="submit">Filtrar</button>
     </form>
+    <div>
+        <button type="button" id="botao-exportar" class="btn btn-outline-success mt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+            </svg> Exportar
+        </button>
+    </div>
     <br /><br />
     <table class="table table-bordered table-striped" style="width:100%">
         <thead>
@@ -48,7 +56,7 @@
             @foreach (var obj in Model)
             {
                 <tr>
-                    <td width="20%">
+                    <td width="20%" id="name-product">
                         @obj.Name
                     </td>
                     <td width="13%">
@@ -73,7 +81,7 @@
         </tbody>
     </table>
 </div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@*<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/main.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
 

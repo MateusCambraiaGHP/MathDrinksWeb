@@ -23,7 +23,7 @@ function atualizaTabelaProdutos() {
 
 function novaLinha(name, quantity, price, description) {
     var linha = $("<tr>");
-    var colunaName = $("<td>").text(name).attr("width", "20%");
+    var colunaName = $("<td>").text(name).attr("width", "20%").attr("id", "name-product");
     var colunaQuantidade = $("<td>").text(quantity).attr("width", "13%");
     var colunaPreco = $("<td>").text(price).attr("width", "20%");
     var colunaDescricao = $("<td>").text(description).attr("width", "40%");

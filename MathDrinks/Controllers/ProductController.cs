@@ -2,16 +2,22 @@
 using MathDrinks.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
+using OfficeOpenXml;
 
 namespace MathDrinks.Controllers
 {
     public class ProductController : Controller
     {
         public readonly IApplicationMySqlDbContext _db;
+        private readonly IProducExcelService _excelService;
 
-        public ProductController(IApplicationMySqlDbContext db)
+        public ProductController(
+            IApplicationMySqlDbContext db,
+            IProducExcelService excelService)
         {
             _db = db;
+            _excelService = excelService;
         }
 
         // [HttpGet("syncprodutos")]
@@ -21,30 +27,30 @@ namespace MathDrinks.Controllers
             return Ok(producsObj);
         }
 
-        public IActionResult PostProduct(Product obj)
+        public async Task<IActionResult> Export()
         {
-            if (ModelState.IsValid)
-            _db.Product.Add(obj);
-            _db.Save();
+            IEnumerable<Product> products = _db.Product.ToList();
+            await _excelService.ExportToExcel(products, "C:/ProjetosMateusPadraoMvc/MathDrinksWeb/MathDrinks/excel", "products");
+
             return Ok();
         }
 
-        public IActionResult Index() 
+        public IActionResult Index()
         {
             IEnumerable<Product> producsObj = _db.Product.ToList();
             return View(producsObj);
         }
-        public IActionResult Create() 
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Product obj) 
+        public IActionResult Create(Product obj)
         {
             if (ModelState.IsValid)
-            _db.Product.Add(obj);
+                _db.Product.Add(obj);
             _db.Save();
             TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
@@ -56,7 +62,7 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-           
+
             var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
 
             if (productFromDb == null)
@@ -71,7 +77,7 @@ namespace MathDrinks.Controllers
         public IActionResult Edit(Product obj)
         {
             if (ModelState.IsValid)
-            _db.Product.Update(obj);
+                _db.Product.Update(obj);
             _db.Save();
             TempData["success"] = "Produto editado com sucesso.";
             return RedirectToAction("Index");
@@ -83,7 +89,7 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-            
+
             var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
             if (productFromDb == null)
             {
@@ -97,11 +103,12 @@ namespace MathDrinks.Controllers
         public IActionResult Delete(int? id)
         {
             var obj = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-            if (obj == null) {
+            if (obj == null)
+            {
                 return NotFound();
             }
             if (ModelState.IsValid)
-            _db.Product.Remove(obj);
+                _db.Product.Remove(obj);
             _db.Save();
             TempData["success"] = "Produto deletado com sucesso.";
             return RedirectToAction("Index");
