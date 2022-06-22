@@ -31,14 +31,9 @@ namespace MathDrinks.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Supplier obj)
         {
-            Validate(obj);
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+            //Validate(obj);
             _db.Supplier.Add(obj);
             _db.Save();
-            TempData["success"] = "Fornecedor criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -48,7 +43,7 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
-            ///Está variavel auxiliar é pra instanciar o produto e o supplier no supplier_product porque o include não estava instanciando
+            ///Está variavel auxiliar é pra instanciar as entidades produto e o supplier no supplier_product porque o include não estava instanciando
             ///produto
             var supplier_product = _db.Supplier_Product.AsNoTracking()
                 .Where(c => c.SupplierId == id)

@@ -1,6 +1,6 @@
-﻿$("#botao-exportar").click(exportaExcel);
+﻿$("#botao-exportar").click(exportExcel);
 
-function exportaExcel() {
+function exportExcel() {
     $.get("https://localhost:7252/Product/Export", data => {
         console.log("exportado");
     });

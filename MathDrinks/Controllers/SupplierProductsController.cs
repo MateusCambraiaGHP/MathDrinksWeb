@@ -89,7 +89,7 @@ namespace MathDrinks.Controllers
             _db.Supplier_Product.Remove(obj);
             _db.Save();
             TempData["success"] = "Produto deletado do fornecedor.";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Supplier");
         }
  
         private void Fill()

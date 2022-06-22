@@ -20,7 +20,6 @@ namespace MathDrinks.Controllers
             _excelService = excelService;
         }
 
-        // [HttpGet("syncprodutos")]
         public IActionResult GetProduct()
         {
             IEnumerable<Product> producsObj = _db.Product.ToList();
@@ -40,6 +39,7 @@ namespace MathDrinks.Controllers
             IEnumerable<Product> producsObj = _db.Product.ToList();
             return View(producsObj);
         }
+
         public IActionResult Create()
         {
             return View();
@@ -64,7 +64,6 @@ namespace MathDrinks.Controllers
             }
 
             var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-
             if (productFromDb == null)
             {
                 return NotFound();
@@ -107,6 +106,7 @@ namespace MathDrinks.Controllers
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
                 _db.Product.Remove(obj);
             _db.Save();
