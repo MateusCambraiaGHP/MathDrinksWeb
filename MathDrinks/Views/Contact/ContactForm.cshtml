@@ -9,9 +9,12 @@
             <h2 class="text-primary">Contato</h2>
             <hr />
         </div>
+        <div class="alert alert-success" id="successful-contact" role="alert">
+            This is a success alert—check it out!
+        </div>
         <div class="mb-3">
             <label asp-for="Name">Nome de contato</label>
-            <input asp-for="Name" placeholder="Escreva seu nome." class="form-control" />
+            <input asp-for="Name" required placeholder="Escreva seu nome." class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -55,10 +58,9 @@
             </select>
             <span asp-validation-for="Need_Descount" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Enviar</button>
+        <button type="submit" class="btn btn-primary" id="botao-enviar-contato" style="width:150px">Enviar</button>
     </div>
 </form>
-
 @section Scripts{
     @{
     <partial name="_ValidationScriptsPartial" />

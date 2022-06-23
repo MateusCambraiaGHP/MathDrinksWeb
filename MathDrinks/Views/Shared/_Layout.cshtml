@@ -27,7 +27,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Produtos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Create">Contato</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="ContactForm">Contato</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Supplier" asp-action="Index">Fornecedores</a>
@@ -51,6 +51,7 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/jquery/dist/main.js"></script>
         <script src="~/lib/jquery/dist/exportExcel.js"></script>
+        <script src="~/lib/jquery/dist/saveContact.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         
         @await RenderSectionAsync("Scripts", required: false)

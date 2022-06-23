@@ -13,20 +13,20 @@ namespace MathDrinks.Controllers
             _db = db;
         }
 
-        public IActionResult Create()
+        public IActionResult ContactForm()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Contact obj)
+        public IActionResult CreateContact(Contact obj)
         {
             if (ModelState.IsValid)
             _db.Contact.Add(obj);
             _db.Save();
             TempData["success"] = "Contato enviado com sucesso.";
-            return RedirectToAction("Create");
+            return Ok();
         }
     }
 }
