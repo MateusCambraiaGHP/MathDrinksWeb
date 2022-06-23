@@ -9,7 +9,7 @@ namespace MathDrinks.Controllers
 {
     public class ProductController : Controller
     {
-        public readonly IApplicationMySqlDbContext _db;
+        private readonly IApplicationMySqlDbContext _db;
         private readonly IProducExcelService _excelService;
 
         public ProductController(
@@ -50,7 +50,7 @@ namespace MathDrinks.Controllers
         public IActionResult Create(Product obj)
         {
             if (ModelState.IsValid)
-                _db.Product.Add(obj);
+              _db.Product.Add(obj);
             _db.Save();
             TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
@@ -58,7 +58,7 @@ namespace MathDrinks.Controllers
 
         public IActionResult Edit(int id)
         {
-            if (id == null || id == 0)
+            if (id == 0)
             {
                 return NotFound();
             }
