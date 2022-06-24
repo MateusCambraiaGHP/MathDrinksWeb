@@ -1,7 +1,7 @@
 ﻿$("#botao-trazer-produtos").click(updateTableProducts);
 
 function updateTableProducts() {
-    $.get("https://localhost:7252/Product/GetProduct", data => {
+    $.get("https://localhost:7252/Product/GetAllProduct", data => {
         console.log(data);
             $('#tabela-produtos').html('');
             setTimeout(function () {
@@ -20,6 +20,7 @@ function updateTableProducts() {
         $("#spinner").toggle();
     });
 };
+
 function createLine(name, quantity, price, description) {
     var line = $("<tr>");
     var columnName = $("<td>").text(name).attr("width", "20%").attr("id", "name-product");

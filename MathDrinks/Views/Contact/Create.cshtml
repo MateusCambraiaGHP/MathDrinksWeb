@@ -19,17 +19,17 @@
         </div>
         <div class="mb-3">
             <label asp-for="Email">E-mail de contato</label>
-            <input asp-for="Email" data-inputmask="'alias': 'email'" inputmode="numeric" id="email" placeholder="Escreva seu e-mail de contato." class="form-control" />
+            <input asp-for="Email" required data-inputmask="'alias': 'email'" inputmode="numeric" id="email" placeholder="Escreva seu e-mail de contato." class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Phone"> Telefone de contato</label>
-            <input asp-for="Phone" placeholder="(XX)XXXX-XXXX" class="form-control" />
+            <input asp-for="Phone" required placeholder="(XX)XXXX-XXXX" class="form-control" />
             <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Mensage">Mensagem de contato</label>
-            <textarea asp-for="Mensage" placeholder="Mensagem para o contato." class="form-control"></textarea>
+            <textarea asp-for="Mensage" required placeholder="Mensagem para o contato." class="form-control"></textarea>
             <span asp-validation-for="Mensage" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -63,6 +63,7 @@
 </form>
 @section Scripts{
     @{
+    <partial name="_Notification" />
     <partial name="_ValidationScriptsPartial" />
     }
 }

@@ -36,7 +36,7 @@
             <h2 class="text-primary text-danger">Lista de Produtos</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="SupplierProducts" asp-action="Create" asp-route-SupplierId="@Model.Id" class="btn btn-primary bg-danger">
+            <a asp-controller="SupplierProducts" asp-action="Create" asp-route-SupplierId="@Model.Id" id="botao-adicionar-produto" class="btn btn-primary bg-danger">
                 <i class="bi bi-plus-circle"></i> &nbsp; Adicionar novo produto.
             </a>
         </div>
@@ -45,9 +45,6 @@
     <table class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>
-                    Nome do fornecedor
-                </th>
                 <th>
                     Nome do Produto
                 </th>
@@ -63,16 +60,13 @@
             @foreach (var obj in @Model.supplierProduct)
             {
                 <tr>
-                    <td width="25%">
-                        @obj.supplier.Name
-                    </td>
-                    <td width="25%">
+                    <td width="30%">
                         @obj.product.Name
                     </td>
-                    <td width="25%">
+                    <td width="40%">
                         @obj.Drescription
                     </td>
-                    <td width="25%">
+                    <td width="30%">
                         @obj.Price
                     </td>
                     <td>
@@ -91,6 +85,7 @@
 
 @section Scripts{
     @{
+    <partial name="_Notification" />
     <partial name="_ValidationScriptsPartial" />
     }
 }

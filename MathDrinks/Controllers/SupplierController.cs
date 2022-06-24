@@ -14,7 +14,13 @@ namespace MathDrinks.Controllers
         {
             _db = db;
         }
-        
+
+        public IActionResult GetSupplierId(int id)
+        {
+            var supplier = _db.Supplier.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
+            return Ok(new { supplier?.Name });
+        }
+
         public IActionResult Index()
         {
             IEnumerable<Supplier> objCategories = _db.Supplier.ToList();

@@ -8,22 +8,22 @@
         </div>
         <div class="mb-3">
             <label asp-for="Name">Nome</label>
-            <input asp-for="Name" id="Name" placeholder="Digite o nome do fornecedor" class="form-control" />
+            <input asp-for="Name" required id="Name" placeholder="Digite o nome do fornecedor" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="FantasyName">Nome Fantasia</label>
-            <input asp-for="FantasyName" placeholder="Digite seu nome fantasia do fornecedor" class="form-control" />
+            <input asp-for="FantasyName" required placeholder="Digite seu nome fantasia do fornecedor" class="form-control" />
             <span asp-validation-for="FantasyName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="CNPJ">CNPJ</label>
-            <input asp-for="CNPJ" placeholder="Digite o CNPJ do fornecedor" class="form-control" />
+            <input asp-for="CNPJ" required placeholder="Digite o CNPJ do fornecedor" class="form-control" />
             <span asp-validation-for="CNPJ" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Cep" id="cep">Cep Do Fornecedor</label>
-            <input asp-for="Cep" placeholder="Cep do fornecedor" class="form-control" />
+            <input asp-for="Cep" required placeholder="Cep do fornecedor" class="form-control" />
             <span asp-validation-for="Cep" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Criar</button>
@@ -31,4 +31,9 @@
     </div>
 </form>
 
-
+@section Scripts{
+    @{
+    <partial name="_Notification" />
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

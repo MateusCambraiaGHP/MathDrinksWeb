@@ -20,7 +20,13 @@ namespace MathDrinks.Controllers
             _excelService = excelService;
         }
 
-        public IActionResult GetProduct()
+        public IActionResult GetProductId(int id)
+        {
+            var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
+            return Ok( new { productFromDb?.Price, productFromDb?.Description });
+        }
+
+        public IActionResult GetAllProduct()
         {
             IEnumerable<Product> producsObj = _db.Product.ToList();
             return Ok(producsObj);

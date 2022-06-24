@@ -15,6 +15,7 @@ namespace MathDrinks.Controllers
         {
             _db = db;
         }
+
         public IActionResult Index()
         {
             IEnumerable<Supplier_Product> objSupplierProduct = _db.Supplier_Product.ToList();
